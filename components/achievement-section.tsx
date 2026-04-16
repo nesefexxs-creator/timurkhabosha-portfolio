@@ -1,13 +1,13 @@
 import { Star, TrendingUp, Users, Award } from "lucide-react"
+import type { PageTranslations } from "@/lib/translations"
 
-const metrics = [
-  { label: "verified reviews", value: "1,400+", icon: Star },
-  { label: "avg. rating", value: "4.97 / 5", icon: Award },
-  { label: "repeat clients", value: "38%", icon: Users },
-  { label: "on-time delivery", value: "99.2%", icon: TrendingUp },
-]
+type AchievementSectionProps = {
+  achievement: PageTranslations["achievement"]
+}
 
-export function AchievementSection() {
+const metricIcons = [Star, Award, Users, TrendingUp]
+
+export function AchievementSection({ achievement }: AchievementSectionProps) {
   return (
     <section
       id="achievement"
@@ -27,10 +27,10 @@ export function AchievementSection() {
         <div className="mb-12 flex items-end justify-between gap-6 border-b border-border pb-6">
           <div>
             <p className="font-mono text-xs text-primary">
-              <span className="text-muted-foreground">02 /</span> proof of work
+              <span className="text-muted-foreground">02 /</span> {achievement.sectionKicker}
             </p>
             <h2 className="mt-2 text-balance text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
-              Trusted by the marketplace
+              {achievement.sectionTitle}
             </h2>
           </div>
         </div>
@@ -43,7 +43,7 @@ export function AchievementSection() {
             <div className="relative">
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 font-mono text-xs text-primary">
                 <Star className="h-3 w-3 fill-primary" aria-hidden="true" />
-                marketplace achievement
+                {achievement.badge}
               </div>
 
               <div className="mt-8 flex items-baseline gap-3">
@@ -54,9 +54,9 @@ export function AchievementSection() {
               </div>
 
               <p className="mt-4 max-w-md text-pretty leading-relaxed text-muted-foreground">
-                Over <span className="font-mono text-foreground">1,400 verified reviews</span>{" "}
-                earned across a major freelance marketplace — built one delivered project at a time,
-                with a near-perfect rating and clients who keep coming back.
+                {achievement.reviewsLead}{" "}
+                <span className="font-mono text-foreground">{achievement.reviewsHighlight}</span>{" "}
+                {achievement.reviewsDescription}
               </p>
 
               {/* star row */}
@@ -71,7 +71,7 @@ export function AchievementSection() {
                   ))}
                 </div>
                 <span className="font-mono text-sm text-muted-foreground">
-                  4.97 average · 1,400+ reviews
+                  {achievement.starSummary}
                 </span>
               </div>
             </div>
@@ -79,17 +79,18 @@ export function AchievementSection() {
 
           {/* Metrics grid */}
           <div className="grid grid-cols-2 gap-4 lg:col-span-5">
-            {metrics.map((m) => {
-              const Icon = m.icon
+            {achievement.metrics.map((m, index) => {
+              const Icon = metricIcons[index] ?? Star
+
               return (
                 <div
-                  key={m.label}
+                  key={`${m.label}-${index}`}
                   className="flex flex-col justify-between rounded-xl border border-border bg-background p-5 transition-colors hover:border-primary/40"
                 >
                   <div className="flex items-center justify-between">
                     <Icon className="h-4 w-4 text-primary" aria-hidden="true" />
                     <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                      live
+                      {achievement.liveLabel}
                     </span>
                   </div>
                   <div className="mt-8">
@@ -106,32 +107,13 @@ export function AchievementSection() {
 
         {/* review strip */}
         <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-          {[
-            {
-              quote:
-                "Instant delivery - the deal was done in 2 minutes.",
-              author: "Marketplace client",
-              rating: 5,
-            },
-            {
-              quote:
-                "Game-side activation failed at first, but seller explained everything and helped me finish it.",
-              author: "Marketplace client",
-              rating: 5,
-            },
-            {
-              quote:
-                "Best price I found today, and communication was clear and respectful.",
-              author: "Marketplace client",
-              rating: 5,
-            },
-          ].map((r, i) => (
+          {achievement.reviews.map((r, i) => (
             <figure
               key={i}
               className="rounded-xl border border-border bg-background p-5"
             >
               <div className="flex items-center gap-0.5">
-                {Array.from({ length: r.rating }).map((_, j) => (
+                {Array.from({ length: 5 }).map((_, j) => (
                   <Star key={j} className="h-3.5 w-3.5 fill-primary text-primary" aria-hidden="true" />
                 ))}
               </div>

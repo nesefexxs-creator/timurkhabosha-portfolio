@@ -1,42 +1,29 @@
-const groups = [
-  {
-    label: "frontend",
-    items: ["TypeScript", "React", "Next.js", "Tailwind CSS", "Zustand"],
-  },
-  {
-    label: "backend",
-    items: ["Node.js", "tRPC", "Prisma", "PostgreSQL", "Redis"],
-  },
-  {
-    label: "infra",
-    items: ["Vercel", "Docker", "AWS", "Cloudflare", "GitHub Actions"],
-  },
-  {
-    label: "tooling",
-    items: ["Stripe", "Resend", "Sentry", "Playwright", "Vitest"],
-  },
-]
+import type { PageTranslations } from "@/lib/translations"
 
-export function StackSection() {
+type StackSectionProps = {
+  stack: PageTranslations["stack"]
+}
+
+export function StackSection({ stack }: StackSectionProps) {
   return (
     <section id="stack" className="border-b border-border/60">
       <div className="mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-28">
         <div className="mb-12 flex items-end justify-between gap-6 border-b border-border pb-6">
           <div>
             <p className="font-mono text-xs text-primary">
-              <span className="text-muted-foreground">03 /</span> stack
+              <span className="text-muted-foreground">03 /</span> {stack.sectionKicker}
             </p>
             <h2 className="mt-2 text-balance text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
-              Tools I reach for
+              {stack.sectionTitle}
             </h2>
           </div>
           <p className="hidden max-w-xs text-sm text-muted-foreground md:block">
-            Boring where it matters. Sharp where it counts.
+            {stack.sectionDescription}
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {groups.map((g) => (
+          {stack.groups.map((g) => (
             <div
               key={g.label}
               className="rounded-xl border border-border bg-card p-5"
