@@ -109,19 +109,19 @@ export function AchievementSection() {
           {[
             {
               quote:
-                "Shipped faster than I expected and the code was genuinely clean. Rare combo.",
+                "Instant delivery - the deal was done in 2 minutes.",
               author: "Marketplace client",
               rating: 5,
             },
             {
               quote:
-                "Handled a tricky Stripe integration like it was nothing. Will hire again.",
+                "Game-side activation failed at first, but seller explained everything and helped me finish it.",
               author: "Marketplace client",
               rating: 5,
             },
             {
               quote:
-                "Fixed issues three other devs couldn't. Communicative and fast.",
+                "Best price I found today, and communication was clear and respectful.",
               author: "Marketplace client",
               rating: 5,
             },
