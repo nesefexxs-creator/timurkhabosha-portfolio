@@ -66,7 +66,9 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
-                  href="#"
+                  href="https://safeloot.net"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group/btn inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 font-mono text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                 >
                   {projects.ctaProgress}

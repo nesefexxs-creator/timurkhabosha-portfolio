@@ -31,14 +31,11 @@ export function SiteNav({ nav, lang, setLang }: SiteNavProps) {
           <a href="#work" className="text-muted-foreground transition-colors hover:text-foreground">
             <span className="text-primary">01.</span> {nav.links.work}
           </a>
-          <a href="#achievement" className="text-muted-foreground transition-colors hover:text-foreground">
-            <span className="text-primary">02.</span> {nav.links.proof}
-          </a>
           <a href="#stack" className="text-muted-foreground transition-colors hover:text-foreground">
-            <span className="text-primary">03.</span> {nav.links.stack}
+            <span className="text-primary">02.</span> {nav.links.stack}
           </a>
           <a href="#contact" className="text-muted-foreground transition-colors hover:text-foreground">
-            <span className="text-primary">04.</span> {nav.links.contact}
+            <span className="text-primary">03.</span> {nav.links.contact}
           </a>
         </nav>
 

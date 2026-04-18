@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 import { SiteNav } from "@/components/site-nav"
 import { HeroSection } from "@/components/hero-section"
 import { ProjectsSection } from "@/components/projects-section"
-import { AchievementSection } from "@/components/achievement-section"
 import { StackSection } from "@/components/stack-section"
 import { ContactSection } from "@/components/contact-section"
 import { translations, type Language } from "@/lib/translations"
@@ -37,7 +36,6 @@ export default function Page() {
       <SiteNav nav={t.nav} lang={lang} setLang={setLang} />
       <HeroSection hero={t.hero} />
       <ProjectsSection projects={t.projects} />
-      <AchievementSection achievement={t.achievement} />
       <StackSection stack={t.stack} />
       <ContactSection contact={t.contact} />
     </main>
